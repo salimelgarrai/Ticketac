@@ -16,8 +16,16 @@ footer {
   /* Footer height */
 }
 
+h5 {
+  color: white;
+}
+
 .test {
   border: 1px solid black;
+}
+
+.form-control {
+  margin: 5px;
 }
 
 .container {
