@@ -32,9 +32,11 @@ router.post('/travel', async function (req, res, next) {
   res.render('results', { journeys })
 })
 
-router.get('/basket', async function(req, res, next){
-  var tickets = await journeyModel.findById(req.query.id)
-  res.render('basket', {tickets});
+router.get('/basket', async function (req, res, next) {
+  var ticket = await journeyModel.findById(req.query.id)
+  req.session.tickets.push(ticket)
+  console.log(req.session.tickets)
+  res.render('basket', { tickets: req.session.tickets })
 })
 
 router.get('/mytrips', function (req, res, next) {
@@ -45,5 +47,6 @@ router.get('/mytrips', function (req, res, next) {
     res.render('mytrips', { lastTrip })
   }
 })
+
 
 module.exports = router
