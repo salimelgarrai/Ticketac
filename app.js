@@ -5,10 +5,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
+var homeRouter = require('./routes/home')
+var session = require("express-session");
 
 var app = express();
+app.use(
+  session({
+   secret: 'a4f8071f-c873-4447-8ee2',
+   resave: false,
+   saveUninitialized: false,
+  })
+  );
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,8 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', loginRouter);
 app.use('/users', usersRouter);
+app.use('/home', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
