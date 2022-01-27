@@ -7,15 +7,20 @@ var userModel = require('../models/users')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  if(req.session.user === undefined){
+    res.render('login')
+  } else {
+    res.render('index')
+  };
 });
 
 router.post('/travel', async function(req, res, next){
   var journeys = await journeyModel.find({
-    daparture: req.body.depart,
+    departure: req.body.depart,
     arrival: req.body.arrivée,
     date: req.body.date
   });
+  console.log(journeys)
     res.render('results', {journeys})
 });
 
