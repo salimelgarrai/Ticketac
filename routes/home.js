@@ -33,4 +33,13 @@ router.post('/travel', async function (req, res, next) {
   res.render('results', { journeys })
 })
 
+router.get('/mytrips', function (req, res, next) {
+  if (req.session.user === undefined) {
+    res.redirect('/')
+  } else {
+    var lastTrip = [1]
+    res.render('mytrips', { lastTrip })
+  }
+})
+
 module.exports = router
