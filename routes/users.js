@@ -11,8 +11,7 @@ var userModel = require('../models/users');
 router.post('/sign-in', async function(req, res, next) {
   var verif = await userModel.findOne({email: req.body.email, password: req.body.password})
   if(verif){
-    req.session.user = {name: verif.firstName, id: verif.id}
-    console.log(req.session.user)
+    req.session.user = {name: verif.firstName, id: verif.id};
     res.redirect('/home')
   } else {
     res.redirect('/')
@@ -29,8 +28,7 @@ router.post('/sign-up', async function(req, res, next){
       password: req.body.password
     })
     var userSaved = await newUser.save();
-    req.session.user = {name: userSaved.firstName, id: userSaved.id}
-    console.log(req.session.user)
+    req.session.user = {name: userSaved.firstName, id: userSaved.id};
     res.redirect('/home');
   } else {
     res.redirect('/')

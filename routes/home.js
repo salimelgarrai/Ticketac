@@ -10,4 +10,13 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.post('/travel', async function(req, res, next){
+  var journeys = await journeyModel.find({
+    daparture: req.body.depart,
+    arrival: req.body.arrivée,
+    date: req.body.date
+  });
+    res.render('results', {journeys})
+});
+
 module.exports = router;
