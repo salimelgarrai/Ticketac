@@ -29,8 +29,11 @@ router.post('/travel', async function (req, res, next) {
     arrival: req.body.arrivée,
     date: req.body.date,
   })
-  console.log(journeys)
   res.render('results', { journeys })
 })
 
+router.get('/basket', async function(req, res, next){
+  var tickets = await journeyModel.findById(req.query.id)
+  res.render('basket', {tickets});
+})
 module.exports = router
