@@ -32,12 +32,11 @@ router.post('/travel', async function (req, res, next) {
   res.render('results', { journeys })
 })
 
-<<<<<<< HEAD
 router.get('/basket', async function(req, res, next){
   var tickets = await journeyModel.findById(req.query.id)
   res.render('basket', {tickets});
 })
-=======
+
 router.get('/mytrips', function (req, res, next) {
   if (req.session.user === undefined) {
     res.redirect('/')
@@ -47,5 +46,4 @@ router.get('/mytrips', function (req, res, next) {
   }
 })
 
->>>>>>> 6d8f12da03543626040dd0571af43b60318b29d7
 module.exports = router

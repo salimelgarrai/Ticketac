@@ -14,7 +14,6 @@
   <%- include('navbar') %>
   <div class="container container-fluid d-flex flex-column align-items-center pb-5">
     <div class="row pt-5 pb-5 mt-5 mt-5 col-10">
-        <% if(lastTrip.length > 0){ %>
           <h5 class="text-white pb-3 ps-5 ms-5">My tickets :</h5>
 
 
@@ -57,15 +56,6 @@
 <div class="d-flex justify-content-end mt-3">
 <a href="/home"  class="btn btn-danger m-2">Confirm</a>
 </div>
-
-        <% } else { %>
-          <div class="d-flex flex-column align-items-center">
-
-           <h3 class="text-white">Oops! No trains available...</h3 class="">
-             <a href="/home"  class="btn btn-danger m-2">Home</a>
-           </div>
-
-        <% } %>
     </div>
   </div>
   <%- include('footer') %>
