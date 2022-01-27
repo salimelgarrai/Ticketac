@@ -48,5 +48,21 @@ router.get('/mytrips', function (req, res, next) {
   }
 })
 
+router.get('/confirm', async function (req, res, next) {
+  if (req.session.user === undefined) {
+    res.redirect('/')
+  } else { 
+    for(var i=0;i<req.session.tickets;i++){
+      await userModel.updateOne({_id: req.session.user.id}, 
+        {$push: {lastTrip: {
+          date: req.session.tickets[i].date,
+          journey: `${req.session.tickets[i].departure} / ${req.session.tickets[i].arrival}`,
+          departureTime: req.session.tickets[i].departureTime,
+          price: req.session.tickets[i].price
+        }}})
+        console.log(req.session.user.id)
+    }
+  }
+})
 
 module.exports = router
