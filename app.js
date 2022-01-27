@@ -32,6 +32,21 @@ app.locals.parseDate = function (date) {
   return `${day}/${month}`
 }
 
+app.locals.parseYear = function (date) {
+  var day = String(date.getDate())
+  if (day.length < 2) {
+    day = `0${day}`
+  }
+  var month = String(date.getMonth() + 1)
+  if (month.length < 2) {
+    month = `0${month}`
+  }
+
+  var year = String(date.getYear())
+
+  return `${day}/${month}/${year}`
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
