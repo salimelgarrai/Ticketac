@@ -39,7 +39,10 @@
     </tr>
   </thead>
   <tbody>
-<% tickets.map( (ticket, index) => {
+<%
+var totalPrice = 0
+tickets.map( (ticket, index) => {
+  totalPrice += ticket.price
 var date = new Date(ticket.date)
 date = parseYear(date)
    %>
@@ -66,7 +69,7 @@ date = parseYear(date)
       <th scope="col"></th>
       <th scope="col"></th>
         <th scope="col"></th>
-      <th scope="col">218 €</th>
+      <th scope="col"><%= totalPrice %> €</th>
     </tr>
     </tfoot>
 </table>
@@ -82,7 +85,7 @@ date = parseYear(date)
 
 <div class="d-flex justify-content-between mt-3">
   <a href="/home/travel"  class="btn btn-danger m-2">Retour</a>
-<button class="btn btn-danger m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Confirm</button>
+<button class="btn btn-danger m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Confirmer</button>
 </div>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">

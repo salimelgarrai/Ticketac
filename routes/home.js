@@ -53,6 +53,7 @@ router.get('/basket', async function (req, res, next) {
       if (exists.length < 1) {
         req.session.tickets.push(ticket)
       }
+      res.redirect('/home/travel')
     }
     res.render('basket', { tickets: req.session.tickets })
   }
@@ -88,7 +89,7 @@ router.get('/confirm', async function (req, res, next) {
         }
       )
     }
-    req.session.tickets = [];
+    req.session.tickets = []
 
     res.render('confirm')
   }
