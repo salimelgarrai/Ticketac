@@ -78,7 +78,7 @@ router.get('/confirm', async function (req, res, next) {
   } else {
     for (const lastTrip of req.session.tickets) {
       await userModel.updateOne(
-        { id: req.session.user },
+        { _id: req.session.user.id },
         {
           $push: {
             lastTrip: lastTrip._id,

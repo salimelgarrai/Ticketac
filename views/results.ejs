@@ -19,7 +19,7 @@
           date = parseYear(date)
 
           %>
-          <h5 class="text-white pb-3">Tickets available on <%= date %> :</h5>
+          <h5 class="text-white pb-3">Trains disponibles le <%= date %> :</h5>
         <%  journeys.map( journey => {         %>
 
           <div class="card d-flex m-2">
@@ -32,15 +32,15 @@
 
         <%  }) %>
 <div class="d-flex justify-content-between mt-3">
-          <a href="/home"  class="btn btn-danger m-2">Back</a>
-        <a href="/home/basket"  class="btn btn-danger m-2">Watch my Basket ...</a>
+          <a href="/home"  class="btn btn-danger m-2">Retour</a>
+        <a href="/home/basket"  class="btn btn-danger m-2">Votre panier ...</a>
 
  </div>
         <% } else { %>
           <div class="d-flex flex-column align-items-center">
 
-           <h3 class="text-white">Oops! No trains available...</h3>
-             <a href="/home"  class="btn btn-danger m-2">Home</a>
+           <h3 class="text-white">Oops! Aucun train disponible</h3>
+             <a href="/home"  class="btn btn-danger m-2">Acceuil</a>
            </div>
 
         <% } %>

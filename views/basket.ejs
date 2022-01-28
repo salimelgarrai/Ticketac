@@ -15,7 +15,7 @@
   <div class="container container-fluid d-flex flex-column align-items-center pb-5">
     <div class="row pt-5 pb-5 mt-5 mt-5 col-10">
       <% if (tickets.length > 0){ %>
-          <h5 class="text-white pb-3 ps-5 ms-5">My tickets :</h5>
+          <h5 class="text-white pb-3 ps-5 ms-5">Mes billets :</h5>
 
 
 
@@ -32,10 +32,10 @@
   <thead>
     <tr>
       <th scope="col">N°</th>
-      <th scope="col">Journey</th>
+      <th scope="col">Voyage</th>
       <th scope="col">Date</th>
-      <th scope="col">Departure Time</th>
-      <th scope="col">Price</th>
+      <th scope="col">Heure de départ</th>
+      <th scope="col">Prix</th>
     </tr>
   </thead>
   <tbody>
@@ -81,7 +81,7 @@ date = parseYear(date)
 
 
 <div class="d-flex justify-content-between mt-3">
-  <a href="/home/travel"  class="btn btn-danger m-2">Back</a>
+  <a href="/home/travel"  class="btn btn-danger m-2">Retour</a>
 <button class="btn btn-danger m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Confirm</button>
 </div>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -101,7 +101,7 @@ date = parseYear(date)
   <div class="d-flex flex-column align-items-center">
 
    <h3 class="text-white">Vous n'avez aucun ticket...</h3>
-     <a href="/home"  class="btn btn-danger m-2">Home</a>
+     <a href="/home"  class="btn btn-danger m-2">Acceuil</a>
    </div>
 
 <% } %>
