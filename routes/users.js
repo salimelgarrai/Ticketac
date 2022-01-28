@@ -6,6 +6,9 @@ var journeyModel = require('../models/journeys')
 var userModel = require('../models/users')
 
 /* GET users listing. */
+router.get('/', function(req, res, next){
+  res.render('login')
+})
 
 router.post('/sign-in', async function (req, res, next) {
   var verif = await userModel.findOne({
@@ -39,6 +42,13 @@ router.post('/sign-up', async function (req, res, next) {
   } else {
     res.redirect('/')
   }
+})
+
+router.get('/logout', async function(req, res, next){
+  req.session.user = undefined
+  req.session.tickets = undefined
+  req.session.travel = undefined
+  res.redirect('/')
 })
 
 module.exports = router
