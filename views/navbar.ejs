@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
       <div>
         <a class="navbar-brand" href="/home">
           <img class="img-fluid me-2" src="/images/train.png"  style="max-width: 26px" alt="train">Ticketac</a>
@@ -11,15 +11,21 @@
             <li class="nav-item">
               <a class="navbar-brand" href="/home/mytrips">My last trips</a>
             </li>
+            <li class="nav-item">
+              <a class="navbar-brand" href="/home/basket">Panier</a>
+            </li>
           </ul>
         </div>
         </div>
-    <div class="d-flex d-none d-lg-block">
+    <div class="d-flex d-none d-lg-block pe-3">
       <a class="navbar-brand text-danger" href="/">Connection</a>
       <a class="navbar-brand" href="/home/mytrips">My last trips</a>
-      <img src="images/shopping-bag.svg" class="shopping">
-      <span  class="load"><span class="badge badge-pill badge-dark count">
-    0</span><span>
+      <a  class="btn btn-Light position-relative rounded-pill" href="/home/basket">
+        <i class="fas fa-cart-arrow-down fa-lg"></i>  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    2
+    <span class="visually-hidden">unread messages</span>
+  </span>
+</a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
