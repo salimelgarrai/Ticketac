@@ -86,9 +86,9 @@ router.get('/confirm', async function (req, res, next) {
         }
       )
     }
+    req.session.tickets = [];
 
     res.render('confirm')
-    req.session.tickets = undefined
   }
 })
 
