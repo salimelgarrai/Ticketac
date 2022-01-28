@@ -61,7 +61,7 @@ date = parseYear(date)
       <td><%= ticket.departure %> / <%= ticket.arrival %></td>
       <td><%= date %></td>
       <td><%= ticket.departureTime %> h</td>
-      <td><%= ticket.quantity %></td>
+      <td><%= ticket.quantity %><a class="reload" data-id="<%= ticket.id %>"  onMouseOver="this.style.cursor='pointer'"><i class="fas fa-sync-alt text-danger ms-2"></i></a></td>
       <td><%= ticket.price * ticket.quantity %> €</td>
       <td class="d-flex justify-content-center"><a href="/home/delete?id=<%= ticket.id %>"><i class="fas fa-trash-alt text-danger"></i></a></td>
     </tr>
@@ -130,5 +130,6 @@ date = parseYear(date)
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="/javascripts/front-basket.js"></script>
 </body>
 </html>

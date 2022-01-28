@@ -18,7 +18,10 @@ router.get('/', function (req, res, next) {
   if (req.session.user === undefined) {
     res.redirect('/')
   } else {
+    console.log(req.session.tickets)
+
     var basketLength = totalBasket(req.session.tickets)
+
     res.render('index', { basketLength })
   }
 })
@@ -141,6 +144,22 @@ router.get('/delete', function (req, res, next) {
     req.session.tickets = req.session.tickets.filter(
       (tick) => tick.id !== req.query.id
     )
+
+    res.redirect('/home/basket')
+  }
+})
+
+router.post('/update', function (req, res, next) {
+  if (req.session.user === undefined) {
+    res.redirect('/')
+  } else {
+    var basketLength = totalBasket(req.session.tickets)
+
+    req.session.tickets.map((tick) => {
+      if (tick.id === req.body.id) {
+        tick.quantity = parseInt(req.body.value)
+      }
+    })
 
     res.redirect('/home/basket')
   }
