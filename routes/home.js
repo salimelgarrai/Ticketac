@@ -76,9 +76,11 @@ router.get('/confirm', async function (req, res, next) {
   if (req.session.user === undefined) {
     res.redirect('/')
   } else {
+    console.log(req.session.user.id)
     for (const lastTrip of req.session.tickets) {
+      console.log(lastTrip._id)
       await userModel.updateOne(
-        { id: req.session.user },
+        { _id: req.session.user.id },
         {
           $push: {
             lastTrip: lastTrip._id,
