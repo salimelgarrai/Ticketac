@@ -42,7 +42,7 @@ app.locals.parseYear = function (date) {
     month = `0${month}`
   }
 
-  var year = String(date.getYear())
+  var year = String(date.getFullYear())
 
   return `${day}/${month}/${year}`
 }

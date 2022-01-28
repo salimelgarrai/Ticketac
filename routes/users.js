@@ -15,6 +15,7 @@ router.post('/sign-in', async function (req, res, next) {
   if (verif) {
     req.session.user = { name: verif.firstName, id: verif.id }
     req.session.tickets = []
+    req.session.travel = {}
     res.redirect('/home')
   } else {
     res.redirect('/')
@@ -33,6 +34,7 @@ router.post('/sign-up', async function (req, res, next) {
     var userSaved = await newUser.save()
     req.session.user = { name: userSaved.firstName, id: userSaved.id }
     req.session.tickets = []
+    req.session.travel = {}
     res.redirect('/home')
   } else {
     res.redirect('/')

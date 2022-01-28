@@ -14,7 +14,15 @@
   <%- include('navbar') %>
   <div class="container container-fluid d-flex flex-column align-items-center pb-5">
     <div class="row pt-5 pb-5 mt-5 mt-5 col-10">
+      <% if (tickets.length > 0){ %>
           <h5 class="text-white pb-3 ps-5 ms-5">My tickets :</h5>
+
+
+
+
+
+
+
 
 
 
@@ -31,7 +39,10 @@
     </tr>
   </thead>
   <tbody>
-<% tickets.map( (ticket, index) => {  %>
+<% tickets.map( (ticket, index) => {
+var date = new Date(ticket.date)
+date = parseYear(date)
+   %>
 
 
 
@@ -41,8 +52,8 @@
     <tr>
       <th scope="row"><%= index + 1 %> </th>
       <td><%= ticket.departure %> / <%= ticket.arrival %></td>
-      <td><%= ticket.date %></td>
-      <td><%= dateFormat(ticket.departureTime) %> h</td>
+      <td><%= date %></td>
+      <td><%= ticket.departureTime %> h</td>
       <td><%= ticket.price %> €</td>
     </tr>
 
@@ -63,10 +74,16 @@
 </div>
 </div>
 
-<div class="d-flex justify-content-end mt-3">
 
+
+
+
+
+
+<div class="d-flex justify-content-between mt-3">
+  <a href="/home/travel"  class="btn btn-danger m-2">Back</a>
 <button class="btn btn-danger m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Confirm</button>
-
+</div>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
     <h5 id="offcanvasRightLabel">Résumé de votre commande</h5>
@@ -79,8 +96,18 @@
   </div>
 </div>
 
+<% } else { %>
 
-</div>
+  <div class="d-flex flex-column align-items-center">
+
+   <h3 class="text-white">Vous n'avez aucun ticket...</h3>
+     <a href="/home"  class="btn btn-danger m-2">Home</a>
+   </div>
+
+<% } %>
+
+
+
     </div>
   </div>
   <%- include('footer') %>
