@@ -13,7 +13,7 @@
 <div class="page-container position-relative" style="min-height: 100vh">
   <%- include('navbar') %>
   <div class="container container-fluid d-flex flex-column align-items-center pb-5">
-    <div class="row pt-5 pb-5 mt-5 mt-5 col-10">
+    <div class="row pt-5 pb-5 mt-5 mt-5 col-12 col-md-10">
       <% if (tickets.length > 0){ %>
           <h5 class="text-white pb-3 ps-5 ms-5">Mes billets :</h5>
 
@@ -35,14 +35,18 @@
       <th scope="col">Voyage</th>
       <th scope="col">Date</th>
       <th scope="col">Heure de départ</th>
+      <th scope="col">Quantité</th>
       <th scope="col">Prix</th>
+      <th class="d-flex justify-content-center" scope="col">Supprimer</th>
     </tr>
   </thead>
   <tbody>
 <%
 var totalPrice = 0
+var totalQuantity = 0
 tickets.map( (ticket, index) => {
-  totalPrice += ticket.price
+  totalPrice += ticket.price * ticket.quantity
+  totalQuantity += ticket.quantity
 var date = new Date(ticket.date)
 date = parseYear(date)
    %>
@@ -57,7 +61,9 @@ date = parseYear(date)
       <td><%= ticket.departure %> / <%= ticket.arrival %></td>
       <td><%= date %></td>
       <td><%= ticket.departureTime %> h</td>
-      <td><%= ticket.price %> €</td>
+      <td><%= ticket.quantity %></td>
+      <td><%= ticket.price * ticket.quantity %> €</td>
+      <td class="d-flex justify-content-center"><a href="/home/delete?id=<%= ticket.id %>"><i class="fas fa-trash-alt text-danger"></i></a></td>
     </tr>
 
 <% }) %>
@@ -68,8 +74,11 @@ date = parseYear(date)
       <th scope="col">Total</th>
       <th scope="col"></th>
       <th scope="col"></th>
-        <th scope="col"></th>
+      <th scope="col"></th>
+        <th scope="col"><%= totalQuantity %></th>
       <th scope="col"><%= totalPrice %> €</th>
+      <th scope="col"></th>
+
     </tr>
     </tfoot>
 </table>
@@ -93,7 +102,9 @@ date = parseYear(date)
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-  <p>Veuillez confirmer votre commande</p>
+  <p>Veuillez confirmer votre commande :</p>
+  <p>Vous avez <span class="text-danger"><%= totalQuantity %></span> articles dans votre panier.</p>
+  <p>Le montant total de votre panier est de : <span class="text-danger"><%= totalPrice %> €</span></p>
   <a href="/home/confirm"  class="btn btn-danger m-2">Confirmer</a>
 
   </div>

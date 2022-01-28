@@ -7,7 +7,10 @@ var userModel = require('../models/users')
 
 /* GET login page. */
 router.get('/', function (req, res, next) {
-  res.render('login')
+  console.log(req.session.message)
+  var message = req.session.message
+  req.session.message = undefined
+  res.render('login', { message })
 })
 
 module.exports = router

@@ -33,6 +33,9 @@
     </form>
     </div>
     </div>
+    <% if (message != undefined){  %>
+        <div class="row"><p class="text-danger"><%= message %></p></div>
+        <% } %> 
   </div>
   <%- include('footer') %>
 </div>
